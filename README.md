@@ -179,7 +179,7 @@ Month navigation (Previous / Next) lets management plan and review across months
 
 <!-- 📸 SCREENSHOT PLACEHOLDER — Add reviews screen screenshot here -->
 ![Reviews Screen](./screenshots/reviews.png)
-![AIGenReply Screen](./screenshots/aigen_reviewreply.png)
+![GenRepl Screen](./screenshots/aigen_reviewreply.png)
 
 The Reviews module fetches **real-time reviews from the Google Business Profile** of two different outlets.
 
