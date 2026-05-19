@@ -194,6 +194,7 @@ The Reviews module fetches **real-time reviews from the Google Business Profile*
 
 <!-- 📸 SCREENSHOT PLACEHOLDER — Add closing/day-end screen screenshot here -->
 ![Closing Screen](./screenshots/closing.png)
+![Closing_Down Screen](./screenshots/closing1.png)
 
 The Closing module simplifies the end-of-day reconciliation process by automatically pulling in sales data from all integrated payment platforms.
 
