@@ -178,7 +178,7 @@ Month navigation (Previous / Next) lets management plan and review across months
 ### Reviews
 
 <!-- 📸 SCREENSHOT PLACEHOLDER — Add reviews screen screenshot here -->
-<!-- Example: ![Reviews Screen](./screenshots/reviews.png) -->
+![Reviews Screen](./screenshots/reviews.png)
 
 The Reviews module fetches **real-time reviews from the Google Business Profile** of two different outlets.
 
@@ -193,7 +193,7 @@ The Reviews module fetches **real-time reviews from the Google Business Profile*
 ### Closing
 
 <!-- 📸 SCREENSHOT PLACEHOLDER — Add closing/day-end screen screenshot here -->
-<!-- Example: ![Closing Screen](./screenshots/closing.png) -->
+![Closing Screen](./screenshots/closing.png)
 
 The Closing module simplifies the end-of-day reconciliation process by automatically pulling in sales data from all integrated payment platforms.
 
