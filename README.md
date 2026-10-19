@@ -14,19 +14,23 @@
   - [Today's Bookings & Ad Leads](#todays-bookings--ad-leads)
   - [Today's Collection](#todays-collection)
   - [DJ Lineup Manager](#dj-lineup-manager)
-  - [Reviews](#reviews)
+  - [DJ Portal](#dj-portal)
+  - [Music Control (Spotify)](#music-control-spotify)
+  - [Reviews & Google Business Profile](#reviews--google-business-profile)
   - [Closing](#closing)
   - [Attendance](#attendance)
+  - [Stock Control](#stock-control)
+  - [Bill Check](#bill-check)
+  - [Admin Dashboard](#admin-dashboard)
 - [Integrations](#integrations)
 - [Coming Soon](#coming-soon)
-- [In Testing](#in-testing)
 - [Architecture Notes](#architecture-notes)
 
 ---
 
 ## Overview
 
-**AHEMP** is a full-stack mobile-first application built to streamline the day-to-day operations big bars and clubs. It replaces fragmented manual processes — paper entry logs, WhatsApp forwards, spreadsheet closing reports — with a single unified platform accessible from any device.
+**AHEMP** is a full-stack mobile-first application built to streamline the day-to-day operations of big bars and clubs. It replaces fragmented manual processes — paper entry logs, WhatsApp forwards, spreadsheet closing reports — with a single unified platform accessible from any device.
 
 The platform is currently deployed for **Asian House** with the architecture designed to support multiple outlets in the future.
 
@@ -48,7 +52,7 @@ The main landing screen gives managers and staff a real-time pulse on the night'
 - **Today Check-ins** — Live count of total check-ins for the day with a Male/Female breakdown
 - **Quick Pay** — A built-in fallback payment option with integrated payment gateway, used when the EDC (card swipe) machine is unavailable. Allows direct collection from customers without interruption
 - **Total Bookings** — Shows the count of bookings for the day sourced from ad leads and direct reservations
-- **Module Shortcuts** — Quick access to CX Entry, Attendance, DJ List, Bookings, Reviews, Closing, and Spotify
+- **Module Shortcuts** — Quick access to CX Entry, Attendance, DJ List, Bookings, Reviews, Closing, Inventory and Spotify
 - **Today's Collection** — Payment breakdown by mode (see [Today's Collection](#todays-collection))
 
 ---
@@ -79,7 +83,7 @@ Once submitted via the **Check-in** button:
 
 ### WhatsApp Confirmation
 
-Immediately after a successful check-in, the customer receives an automated WhatsApp message using Whatsapp Business API.
+Immediately after a successful check-in, the customer receives an automated WhatsApp message using the Meta WhatsApp Cloud API.
 
 ![WhatsApp Confirmation](./screenshots/whatsapp_confirmation.png)
 
@@ -161,6 +165,7 @@ Owners and managers can plan, assign, and track DJ bookings for the entire month
 - View per-slot payment status: `Paid` or `Unpaid`
 - Edit or delete any slot
 - Transaction reference (TXN) visible for paid slots
+- The DJ gets an automatic WhatsApp when their slot is marked paid
 
 **Monthly Statistics:**
 
@@ -175,9 +180,24 @@ Month navigation (Previous / Next) lets management plan and review across months
 
 ---
 
-### Reviews
+### DJ Portal
 
-<!-- 📸 SCREENSHOT PLACEHOLDER — Add reviews screen screenshot here -->
+<!-- 📸 SCREENSHOT PLACEHOLDER — Add DJ portal screenshot here -->
+
+DJs log in to their own section of the app to see their upcoming slots and their payments for the last three months.
+
+---
+
+### Music Control (Spotify)
+
+<!-- 📸 SCREENSHOT PLACEHOLDER — Add Spotify player screenshot here -->
+
+Staff control the venue's music from the app: see what's playing and the queue, search and request songs, and keep a song catalog. No dedicated master device needed.
+
+---
+
+### Reviews & Google Business Profile
+
 ![Reviews Screen](./screenshots/reviews.png)
 ![GenRepl Screen](./screenshots/aigen_reviewreply.png)
 
@@ -189,11 +209,12 @@ The Reviews module fetches **real-time reviews from the Google Business Profile*
 - Staff can **edit** the AI-generated response before posting
 - Helps maintain consistent and prompt engagement on the Google listing
 
+**Google Business Profile tools (admin):** profile performance (views, calls, directions), search keywords, posts / events / offers, the Google menu, a review link & QR generator, and alerts for new reviews.
+
 ---
 
 ### Closing
 
-<!-- 📸 SCREENSHOT PLACEHOLDER — Add closing/day-end screen screenshot here -->
 ![Closing Screen](./screenshots/closing.png)
 ![Closing_Down Screen](./screenshots/closing1.png)
 
@@ -204,8 +225,8 @@ The Closing module simplifies the end-of-day reconciliation process by automatic
 | Source | Description |
 |---|---|
 | Paytm (EDC) | Card and POS terminal settlements |
-| Zomato Dining | Online payments via Zomato Dining |
-| Swiggy Dining | Online payemtns via Swiggy Dineout |
+| Zomato Dining | Online payments via Zomato Dining (auto-synced) |
+| Swiggy Dining | Online payments via Swiggy Dineout (auto-synced) |
 
 The closing screen presents a consolidated view of total collections across all channels, which can be verified against the POS partner report — making EOD settlement a fast, auditable process rather than a manual reconciliation effort.
 
@@ -213,7 +234,48 @@ The closing screen presents a consolidated view of total collections across all 
 
 ### Attendance
 
-Staff attendance tracking module accessible from the main dashboard. Full details covered under the [Coming Soon](#coming-soon) section as enhanced biometric features are being rolled out.
+<!-- 📸 SCREENSHOT PLACEHOLDER — Add attendance screenshot here -->
+
+- Staff punch in and out on a **fingerprint device**; punches sync to AHEMP automatically
+- Staff see their own In / Out times in the app
+- Owners see who's in today, daily records with breaks, and the raw punch logs
+- Salary is calculated from hours worked
+
+---
+
+### Stock Control
+
+<!-- 📸 SCREENSHOT PLACEHOLDER — Add stock control / night report screenshot here -->
+
+**Goal:** Reduce alcohol wastage and catch missing bottles.
+
+- Staff count every fridge each night
+- AHEMP compares the count with what should be there: last count + bottles moved in − bottles sold on the POS − write-offs
+- Deliveries are picked up automatically from the POS purchase entries
+- A **Night Report** and WhatsApp alerts flag missing bottles, missed counts and low stock
+
+---
+
+### Bill Check
+
+Every POS bill is checked automatically for wrong prices, wrong GST or service charge, and items that shouldn't have been billed. A monthly view shows under- and over-charging per item and per staff member.
+
+---
+
+### Admin Dashboard
+
+<!-- 📸 SCREENSHOT PLACEHOLDER — Add admin dashboard screenshot here -->
+
+A desktop panel for owners, alongside the mobile app:
+
+- **Sales & Orders** — POS orders with Print / PDF and a one-tap **Send Report** on WhatsApp, entries, transactions, monthly reports
+- **WhatsApp Inbox** — chat with customers, plus an **auto-reply bot** for common questions (timings, location, bookings, menu) that hands off to staff when needed
+- **Customers** — every guest's visit history
+- **Expenses** — bills, vendors, payables and payments, with a monthly overview
+- **Google Ads** — campaign reports; guests who actually checked in are sent back to Google as conversions
+- **Digital Menu** — the online menu guests order from, linked to the POS
+- **Team** — new staff get an app install link on WhatsApp, upload their ID and salary details for verification, and sign-ins are tracked per device
+- **AI Knowledge Base** — one place for the business facts all AI features use
 
 ---
 
@@ -221,64 +283,46 @@ Staff attendance tracking module accessible from the main dashboard. Full detail
 
 | Integration | Purpose |
 |---|---|
-| **WhatsApp Business API** | Automated check-in confirmation with QR code |
-| **POS System** | Entry data sync; cover charge redemption via QR at bill |
+| **Meta WhatsApp Cloud API** | Check-in confirmations, alerts, reports, inbox & auto-replies |
+| **POS System (PetPooja)** | Entry data sync; cover charge redemption via QR at bill; bill checks & stock |
 | **Payment Gateway** | Quick Pay fallback for card machine downtime |
 | **Paytm EDC** | Day-end closing reconciliation |
 | **Zomato Dining** | Online dining bookings & closing data |
 | **Swiggy Dining** | Online dining bookings & closing data |
-| **Google Ads** | Lead tracking & ad performance via bookings |
+| **Google Ads** | Lead tracking, ad reports & offline conversions |
 | **Meta Ads** | Lead tracking & ad performance via bookings |
-| **Google Business Profile** | Real-time review fetching |
+| **Google Business Profile** | Reviews, performance, posts & menu |
 | **Gemini AI** | AI-generated responses for Google Reviews |
 | **BillDesk** | Online payment collection tracking |
+| **Spotify** | Venue music control |
+| **Fingerprint Device (eSSL)** | Staff attendance punches |
 
 ---
 
 ## Coming Soon
 
-### DJ Dashboard
-DJs will be able to directly sign up on AHEMP and self-manage their schedule. Features planned:
-- DJ self-registration and profile creation
-- Schedule their own show dates
-- View and manage payment status
-- Communicate availability directly through the app
+### Smart Bottle Scale
+A weighing machine built in-house: place an open bottle on it and it tells you how much is left, synced straight into Stock Control. This brings stock tracking down from full bottles to the exact pour.
 
-### Spotify Integration for Staff
-Staff will be able to control the venue's music directly from the app, eliminating dependency on a dedicated master device.
-- Browse and queue tracks
-- Control playback
-- Manage playlists per event type
+### Advanced Ads Insights
+- Extended Google Ads conversion reports
+- Competitor spend analysis
+- Suggestions on what to change in each campaign
+- A special discount coupon for guests who sign up through Google Ads, so every visit can be tracked accurately
 
-### Staff Attendance — Biometric & Geolocation
-A comprehensive attendance and payroll system for venue staff:
+### Outlet & Guest Analytics
+- Average peak times of the outlet, by day, week and month
+- How long guests stay on average
+- Average table spend by group size
+
+### AI Stock Forecasting
+Predict how much stock is needed for the coming days, based on past sales and trends.
+
+### Attendance — Face Recognition & Geolocation
 - **Face Recognition** attendance marking
-- **Fingerprint** based sign-in
 - **Geolocation fencing** — attendance only valid within the venue premises
 - Preset shift management (opening, floor, bar, closing)
-- Auto salary computation based on:
-  - Days present / absent
-  - Late arrivals
-  - Overtime shifts
-  - Leave balances
-- Staff self-service view — employees can see their own attendance and calculated pay in real time
-
----
-
-## In Testing
-
-### Inventory Management System
-Currently under development and testing before production deployment.
-
-**Goal:** Reduce alcohol wastage and ensure pour accuracy across the bar.
-
-**Approach:**
-- Track stock at bottle level
-- Use alcohol percentage and volume mathematics to calculate expected remaining quantity per bottle
-- Flag discrepancies between expected and actual inventory
-- Generate reports for loss analysis and ordering decisions
-
-> ⚠️ This feature is **not yet live**. Pending QA and mutliple validation for accuracy before rollout.
+- Salary adjustments for late arrivals, overtime and leave balances
 
 ---
 
